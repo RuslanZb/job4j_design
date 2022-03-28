@@ -127,4 +127,19 @@ public class SimpleArrayListTest {
         iterator.next();
     }
 
+    @Test
+    public void whenLengthZeroAfterAddThenMustBeLengthIncrease() {
+        list = new SimpleArrayList<>(0);
+        list.add(null);
+        Assert.assertEquals(1, list.size());
+        list.add(null);
+        Assert.assertEquals(2, list.size());
+    }
+
+    @Test
+    public void whenContainerFullAndRemove() {
+        list.remove(2);
+        Assert.assertEquals(2, list.size());
+    }
+
 }
