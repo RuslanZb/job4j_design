@@ -2,7 +2,6 @@ package ru.job4j.map;
 
 import org.junit.Assert;
 import org.junit.Test;
-
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 
