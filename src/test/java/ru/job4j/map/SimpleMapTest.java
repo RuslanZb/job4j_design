@@ -2,6 +2,7 @@ package ru.job4j.map;
 
 import org.junit.Assert;
 import org.junit.Test;
+
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 
@@ -46,6 +47,23 @@ public class SimpleMapTest {
     }
 
     @Test
+    public void whenRemoveThenTrue() {
+        Map<Integer, String> map = new SimpleMap<>();
+        map.put(1, "one");
+        map.put(2, "two");
+        assertTrue(map.remove(1));
+        Assert.assertNull(map.get(1));
+    }
+
+    @Test
+    public void whenRemoveThenFalse() {
+        Map<Integer, String> map = new SimpleMap<>();
+        map.put(1, "one");
+        map.put(2, "two");
+        assertFalse(map.remove(3));
+    }
+
+    @Test
     public void whenExpend() {
         Map<Integer, String> map = new SimpleMap<>();
         map.put(null, "eee");
@@ -76,6 +94,19 @@ public class SimpleMapTest {
         Assert.assertEquals(Integer.valueOf(2), iterator.next());
         Assert.assertTrue(iterator.hasNext());
         Assert.assertEquals(Integer.valueOf(3), iterator.next());
+        Assert.assertFalse(iterator.hasNext());
+    }
+
+    @Test
+    public void whenEmptyCellThenIteratorSkip() {
+        Map<Integer, String> map = new SimpleMap<>();
+        map.put(null, "eee");
+        map.put(5, "5");
+        Iterator<Integer> iterator = map.iterator();
+        Assert.assertTrue(iterator.hasNext());
+        Assert.assertNull(iterator.next());
+        Assert.assertTrue(iterator.hasNext());
+        Assert.assertEquals(Integer.valueOf(5), iterator.next());
         Assert.assertFalse(iterator.hasNext());
     }
 

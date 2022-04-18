@@ -20,7 +20,7 @@ public class SimpleMap<K, V> implements Map<K, V> {
     @Override
     public boolean put(K key, V value) {
         boolean rsl = false;
-        if (count / capacity >= LOAD_FACTOR) {
+        if ((float) count / capacity >= LOAD_FACTOR) {
             expand();
         }
         int index = indexFor(hash(key));
@@ -45,17 +45,18 @@ public class SimpleMap<K, V> implements Map<K, V> {
         capacity = capacity * 2;
         MapEntry<K, V>[] newTable = new MapEntry[capacity];
         for (MapEntry<K, V> el : table) {
-            newTable[indexFor(hash(el.key))] = el;
+            if (el != null) {
+                newTable[indexFor(hash(el.key))] = new MapEntry<>(el.key, el.value);
+            }
         }
         table = newTable;
     }
-
 
     @Override
     public V get(K key) {
         V rsl = null;
         int index = indexFor(hash(key));
-        if (table[index] != null) {
+        if (table[index] != null && (Objects.equals(key, table[index].key))) {
             rsl = table[index].value;
         }
         return rsl;
@@ -65,7 +66,7 @@ public class SimpleMap<K, V> implements Map<K, V> {
     public boolean remove(K key) {
         boolean rsl = false;
         int index = indexFor(hash(key));
-        if (table[index] != null) {
+        if (table[index] != null && Objects.equals(key, table[index].key)) {
             table[index].key = null;
             table[index].value = null;
             rsl = true;
@@ -87,7 +88,10 @@ public class SimpleMap<K, V> implements Map<K, V> {
                 if (expectedModCount != modCount) {
                     throw new ConcurrentModificationException();
                 }
-                return index < count;
+                while (index < table.length && table[index] == null) {
+                    index++;
+                }
+                return index < table.length;
             }
 
             @Override
