@@ -52,7 +52,10 @@ public class SimpleMapTest {
         map.put(1, "one");
         map.put(2, "two");
         assertTrue(map.remove(1));
-        Assert.assertNull(map.get(1));
+        Iterator<Integer> iterator = map.iterator();
+        Assert.assertTrue(iterator.hasNext());
+        Assert.assertEquals(Integer.valueOf(2), iterator.next());
+        Assert.assertFalse(iterator.hasNext());
     }
 
     @Test

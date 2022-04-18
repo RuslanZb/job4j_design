@@ -67,8 +67,7 @@ public class SimpleMap<K, V> implements Map<K, V> {
         boolean rsl = false;
         int index = indexFor(hash(key));
         if (table[index] != null && Objects.equals(key, table[index].key)) {
-            table[index].key = null;
-            table[index].value = null;
+            table[index] = null;
             rsl = true;
             count--;
             modCount++;
