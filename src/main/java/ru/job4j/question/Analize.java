@@ -25,6 +25,6 @@ public class Analize {
                 del--;
             }
         }
-        return new Info(add,ch,del);
+        return new Info(add, ch, del);
     }
 }
