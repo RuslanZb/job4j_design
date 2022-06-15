@@ -22,7 +22,7 @@ public class Config {
                 if (!line.isEmpty() && !line.startsWith("#")) {
                     if (line.startsWith("=") || !line.contains("=")
                             || line.indexOf("=") == line.length() - 1) {
-                        throw new IllegalArgumentException();
+                        throw new IllegalArgumentException("incorrect pair \"key=value\"");
                     }
                     this.values.put(line.substring(0, line.indexOf("=")),
                             line.substring(line.indexOf("=") + 1));
