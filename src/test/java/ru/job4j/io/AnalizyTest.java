@@ -1,13 +1,13 @@
 package ru.job4j.io;
 
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.*;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 
 import java.io.*;
-
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.*;
 
 public class AnalizyTest {
     @Rule
@@ -15,8 +15,8 @@ public class AnalizyTest {
 
     @Test
     public void example1() throws IOException {
-        File source = folder.newFile("source.txt");
-        File target = folder.newFile("target.txt");
+        File source = folder.newFile("source.log");
+        File target = folder.newFile("target.log");
         try (PrintWriter out = new PrintWriter(source)) {
             out.println("200 10:56:01");
             out.println("500 10:57:01");
@@ -33,8 +33,8 @@ public class AnalizyTest {
             in.read(str);
             rsl = new String(str);
         }
-        assertThat(rsl, is("10:57:01;10:59:01;" + System.lineSeparator() +
-                "11:01:02;11:02:02;" + System.lineSeparator()));
+        assertThat(rsl, is("10:57:01;10:59:01;" + System.lineSeparator()
+                + "11:01:02;11:02:02;" + System.lineSeparator()));
     }
 
     @Test
