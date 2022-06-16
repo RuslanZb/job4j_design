@@ -13,7 +13,6 @@ public class AnalizyTest {
     @Rule
     public TemporaryFolder folder = new TemporaryFolder();
 
-
     @Test
     public void example1() throws IOException {
         File source = folder.newFile("source.txt");
