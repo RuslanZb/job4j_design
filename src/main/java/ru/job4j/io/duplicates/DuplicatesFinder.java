@@ -10,7 +10,12 @@ public class DuplicatesFinder {
     public static void main(String[] args) throws IOException {
         DuplicatesVisitor duplicatesVisitor = new DuplicatesVisitor();
         Files.walkFileTree(Path.of("./"), duplicatesVisitor);
-        for (Map.Entry<FileProperty, List<Path>> map : duplicatesVisitor.getFiles().entrySet()) {
+        print(duplicatesVisitor);
+
+    }
+
+    private static void print(DuplicatesVisitor duplicates) {
+        for (Map.Entry<FileProperty, List<Path>> map : duplicates.getFiles().entrySet()) {
             if (map.getValue().size() > 1) {
                 System.out.printf("%s - %d bytes:" + System.lineSeparator(),
                         map.getKey().getName(),
