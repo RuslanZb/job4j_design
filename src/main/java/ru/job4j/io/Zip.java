@@ -23,7 +23,7 @@ public class Zip {
     }
 
     public static void main(String[] args) throws IOException {
-        String [] argsValue = new String[]{
+        String[] argsValue = new String[]{
                 ArgsName.of(args).get("d"),
                 ArgsName.of(args).get("e"),
                 ArgsName.of(args).get("o")
