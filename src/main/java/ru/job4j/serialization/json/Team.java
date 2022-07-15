@@ -12,8 +12,8 @@ public class Team {
     private String[] lineUp;
     private Match match;
 
-    public Team (boolean qualified, int point, String name, String[] lineUp,
-                 Match match) {
+    public Team(boolean qualified, int point, String name, String[] lineUp,
+                Match match) {
         this.qualified = qualified;
         this.point = point;
         this.name = name;
@@ -23,13 +23,13 @@ public class Team {
 
     @Override
     public String toString() {
-        return "Team{" +
-                "qualified=" + qualified +
-                ", point=" + point +
-                ", name='" + name + '\'' +
-                ", lineUp=" + Arrays.toString(lineUp) +
-                ", match=" + match +
-                '}';
+        return "Team{"
+                + "qualified=" + qualified
+                + ", point=" + point
+                + ", name='" + name + '\''
+                + ", lineUp=" + Arrays.toString(lineUp)
+                + ", match=" + match
+                + '}';
     }
 
     public static void main(String[] args) {

@@ -5,7 +5,7 @@ public class Match {
     private int scored;
     private int conceded;
 
-    public Match (String opponent, int scored, int conceded) {
+    public Match(String opponent, int scored, int conceded) {
         this.opponent = opponent;
         this.scored = scored;
         this.conceded = conceded;
@@ -13,10 +13,10 @@ public class Match {
 
     @Override
     public String toString() {
-        return "Match{" +
-                "opponent='" + opponent + '\'' +
-                ", scored=" + scored +
-                ", conceded=" + conceded +
-                '}';
+        return "Match{"
+                + "opponent='" + opponent + '\''
+                + ", scored=" + scored
+                + ", conceded=" + conceded
+                + '}';
     }
 }
