@@ -2,6 +2,7 @@ package ru.job4j.serialization.json;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.json.JSONObject;
 
 import java.util.Arrays;
 
@@ -32,6 +33,26 @@ public class Team {
                 + '}';
     }
 
+    public boolean isQualified() {
+        return qualified;
+    }
+
+    public int getPoint() {
+        return point;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String[] getLineUp() {
+        return lineUp;
+    }
+
+    public Match getMatch() {
+        return match;
+    }
+
     public static void main(String[] args) {
         Team team = new Team(true, 3, "RD", new String[]{"Garry", "Ron"},
                 new Match("NY", 6, 3));
@@ -46,5 +67,13 @@ public class Team {
                 + "}";
         Team teamFromJson = gson.fromJson(teamJson, Team.class);
         System.out.println(teamFromJson);
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("qualified", team.isQualified());
+        jsonObject.put("point", team.getPoint());
+        jsonObject.put("name", team.getName());
+        jsonObject.put("lineUp", team.getLineUp());
+        jsonObject.put("match", new JSONObject(team.getMatch()));
+        System.out.println(jsonObject);
+        System.out.println(new JSONObject(team));
     }
 }

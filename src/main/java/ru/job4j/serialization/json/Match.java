@@ -19,4 +19,16 @@ public class Match {
                 + ", conceded=" + conceded
                 + '}';
     }
+
+    public String getOpponent() {
+        return opponent;
+    }
+
+    public int getScored() {
+        return scored;
+    }
+
+    public int getConceded() {
+        return conceded;
+    }
 }
