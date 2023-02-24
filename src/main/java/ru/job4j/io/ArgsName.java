@@ -12,6 +12,10 @@ public class ArgsName {
         return values.get(key);
     }
 
+    public int size() {
+        return values.size();
+    }
+
     private void parse(String[] args) {
         check(args);
         for (String arg : args) {
