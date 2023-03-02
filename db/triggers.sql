@@ -14,12 +14,12 @@ create or replace function tax_row()
     returns trigger as
 $$
     BEGIN
-        update products
-        set price = price + price * 0.2;
+        new.price = new.price + new.price * 0.2;
 		return new;		
     END;
 $$
 LANGUAGE 'plpgsql';
+
 
 create trigger tax_trigger_after
     after insert on products
