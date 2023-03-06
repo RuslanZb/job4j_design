@@ -1,0 +1,11 @@
+begin transaction;
+select * from book;
+select * from book;
+select * from book;
+commit;
+begin transaction isolation level repeatable read;
+update book set price = 500 where name = 'Капитанская дочь';
+commit;
+begin transaction isolation level serializable;
+update book set price = 400 where name = 'Капитанская дочь';
+commit;
