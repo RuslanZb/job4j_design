@@ -2,6 +2,7 @@ package ru.job4j.ood.template;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,7 +17,7 @@ class SimpleGeneratorTest {
         Generator generator = new SimpleGenerator();
         Map<String, String> map = new HashMap<>();
         map.put("name", "Брюс ли");
-        map.put("subject","you");
+        map.put("subject", "you");
         assertThat(generator.produce(template, map)).isEqualTo("I am a Брюс ли, Who are you? ");
     }
 
@@ -26,7 +27,7 @@ class SimpleGeneratorTest {
         Generator generator = new SimpleGenerator();
         Map<String, String> map = new HashMap<>();
         map.put("name", "Брюс ли");
-        map.put("object","you");
+        map.put("object", "you");
         assertThatThrownBy(() -> generator.produce(template, map)).
                 isInstanceOf(IllegalArgumentException.class);
     }
@@ -37,18 +38,19 @@ class SimpleGeneratorTest {
         Generator generator = new SimpleGenerator();
         Map<String, String> map = new HashMap<>();
         map.put("name", "Брюс ли");
-        map.put("subject","you");
-        map.put("object","he");
+        map.put("subject", "you");
+        map.put("object", "he");
         assertThatThrownBy(() -> generator.produce(template, map)).
                 isInstanceOf(IllegalArgumentException.class);
     }
+
     @Test
     public void whenTemplateIsIncorrectThenGetException() {
         String template = "I am a *{name}, Who are *{subject}? ";
         Generator generator = new SimpleGenerator();
         Map<String, String> map = new HashMap<>();
         map.put("name", "Брюс ли");
-        map.put("subject","you");
+        map.put("subject", "you");
         assertThatThrownBy(() -> generator.produce(template, map)).
                 isInstanceOf(IllegalArgumentException.class);
     }
