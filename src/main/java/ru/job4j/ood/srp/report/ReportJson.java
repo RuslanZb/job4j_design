@@ -18,16 +18,17 @@ public class ReportJson implements Report {
         this.store = store;
         this.dateTimeParser = dateTimeParser;
     }
+
     @Override
     public String generate(Predicate<Employee> filter) {
-       JSONArray jsonArray = new JSONArray();
+        JSONArray jsonArray = new JSONArray();
         for (Employee employee : store.findBy(filter)) {
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("Name", employee.getName());
-            jsonObject.put("Hired", dateTimeParser.parse(employee.getHired()));
-            jsonObject.put("Fired", dateTimeParser.parse(employee.getFired()));
-            jsonObject.put("Salary", String.valueOf(employee.getSalary()));
-            jsonArray.put(jsonObject);
+            jsonArray.put(new JSONObject()
+                    .put("Name", employee.getName())
+                    .put("Hired", dateTimeParser.parse(employee.getHired()))
+                    .put("Fired", dateTimeParser.parse(employee.getFired()))
+                    .put("Salary", String.valueOf(employee.getSalary()))
+            );
         }
         return jsonArray.toString();
     }

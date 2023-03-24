@@ -6,7 +6,6 @@ import ru.job4j.ood.srp.formatter.ReportDateTimeParser;
 import ru.job4j.ood.srp.model.Employee;
 import ru.job4j.ood.srp.store.MemStore;
 
-import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import java.util.Calendar;
 
@@ -21,7 +20,7 @@ class ReportXmlTest {
         Employee worker = new Employee("Ivan", now, now, 100);
         DateTimeParser<Calendar> parser = new ReportDateTimeParser();
         store.add(worker);
-        Report report = new ReportXml(store, JAXBContext.newInstance(ReportXml.Employees.class));
+        Report report = new ReportXml(store);
         String expect = String.format("""
                         <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
                         <employees>

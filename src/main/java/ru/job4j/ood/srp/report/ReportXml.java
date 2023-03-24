@@ -17,9 +17,9 @@ public class ReportXml implements Report {
     private final Store store;
     private final Marshaller marshaller;
 
-    public ReportXml(Store store, JAXBContext context) throws JAXBException {
+    public ReportXml(Store store) throws JAXBException {
         this.store = store;
-        marshaller = context.createMarshaller();
+        marshaller = JAXBContext.newInstance(ReportXml.Employees.class).createMarshaller();
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
     }
 
