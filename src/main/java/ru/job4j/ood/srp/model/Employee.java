@@ -1,13 +1,28 @@
 package ru.job4j.ood.srp.model;
 
+import ru.job4j.ood.srp.formatter.ReportXmlDateTimeParser;
+
+import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.util.Calendar;
 import java.util.Objects;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Employee {
+    @XmlElement
     private String name;
+    @XmlElement
+    @XmlJavaTypeAdapter(ReportXmlDateTimeParser.class)
     private Calendar hired;
+    @XmlElement
+    @XmlJavaTypeAdapter(ReportXmlDateTimeParser.class)
     private Calendar fired;
+    @XmlElement
     private double salary;
+
+    public Employee() {
+
+    }
 
     public Employee(String name, Calendar hired, Calendar fired, double salary) {
         this.name = name;
