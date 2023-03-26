@@ -1,7 +1,7 @@
 package ru.job4j.ood.store;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -15,8 +15,8 @@ class ControlQualityTest {
     private static ControlQuality controlQuality;
     private static List<Store> stores;
 
-    @BeforeAll
-    public static void init() {
+    @BeforeEach
+    public void init() {
         controlQuality = new ControlQuality(LocalDate.now());
         Store warehouse = new Warehouse();
         Store shop = new Shop();
