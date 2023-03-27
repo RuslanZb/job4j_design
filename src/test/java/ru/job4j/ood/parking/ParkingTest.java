@@ -1,20 +1,20 @@
 package ru.job4j.ood.parking;
 
 import org.junit.Ignore;
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-@Ignore
+@Disabled
 class ParkingTest {
 
     @Test
     public void whenAddCar() {
         Store parking = new Parking(1, 1);
         Vehicle vehicle = new Car("777", 1);
-        Assertions.assertTrue(parking.add(vehicle));
+        assertThat(parking.add(vehicle)).isTrue();
     }
 
     @Test
@@ -29,7 +29,7 @@ class ParkingTest {
     public void whenAddTruck() {
         Store parking = new Parking(1, 1);
         Vehicle vehicle = new Truck("777", 2);
-        Assertions.assertTrue(parking.add(vehicle));
+        assertThat(parking.add(vehicle)).isTrue();
     }
 
     @Test
@@ -44,7 +44,7 @@ class ParkingTest {
     public void whenAddTruckButNotPlace() {
         Store parking = new Parking(1, 0);
         Vehicle vehicle = new Truck("777", 2);
-        Assertions.assertFalse(parking.add(vehicle));
+        assertThat(parking.add(vehicle)).isFalse();
     }
 
     @Test
@@ -53,14 +53,14 @@ class ParkingTest {
         Vehicle vehicle = new Car("777", 1);
         Vehicle car = new Car("666", 1);
         parking.add(vehicle);
-        Assertions.assertFalse(parking.add(car));
+        assertThat(parking.add(car)).isFalse();
     }
 
     @Test
     public void whenAddTruckThenAddedToCarPlace() {
         Store parking = new Parking(2, 0);
         Vehicle vehicle = new Truck("777", 2);
-        Assertions.assertTrue(parking.add(vehicle));
+        assertThat(parking.add(vehicle)).isTrue();
     }
 
     @Test
@@ -75,7 +75,7 @@ class ParkingTest {
         parking.add(car3);
         parking.remove("111");
         parking.remove("333");
-        Assertions.assertFalse(parking.add(truck));
+        assertThat(parking.add(truck)).isFalse();
     }
 
 }
