@@ -14,7 +14,7 @@ public class ControlQuality {
         this.currentDate = currentDate;
     }
 
-    public void rotation(List<Store> stores) {
+    public void resort(List<Store> stores) {
         for (Store store : stores) {
             for (Food food : store.replace(currentDate)) {
                 add(stores, food);

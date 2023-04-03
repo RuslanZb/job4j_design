@@ -92,7 +92,7 @@ class ControlQualityTest {
         controlQuality.add(stores, chicken);
         controlQuality.add(stores, bread);
         controlQuality.setCurrentDate(plusDay(2));
-        controlQuality.rotation(stores);
+        controlQuality.resort(stores);
         Food exceptBread = new Bread("Хлеб", minusDay(10), plusDay(1), 40, 10);
         assertAll(
                 () -> assertThat(stores.get(0).findAll()).isEmpty(),
